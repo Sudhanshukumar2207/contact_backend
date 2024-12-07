@@ -17,10 +17,10 @@ const contactSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: [true, "Please add the contact phone number"],
-        unique: [true, "Already saved"],
+        // unique: [true, "Already saved"],
     },
 }, {
     timestamps: true,
 });
-
+contactSchema.index({ user_id: 1, phone: 1 }, { unique: true });
 module.exports = mongoose.model("Contact", contactSchema);
